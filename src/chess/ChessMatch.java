@@ -79,7 +79,7 @@ public class ChessMatch {
 
         if (testCheck(currentPlayer)) {
             undoMove(source, target, capturedPiece);
-            throw new ChessException("You can't put yourself in check");
+            throw new ChessException("Você não pode se colocar em check!");
         }
 
         ChessPiece movedPiece = (ChessPiece)board.piece(target);
@@ -138,19 +138,19 @@ public class ChessMatch {
 
     private void validateSourcePosition(Position position) {
         if (!board.thereIsAPiece(position)) {
-            throw new ChessException("There is no piece on source position");
+            throw new ChessException("Não há peça na posição de origem.");
         }
         if (currentPlayer != ((ChessPiece) board.piece(position)).getColor()) {
-            throw new ChessException("The chosen piece is not yours");
+            throw new ChessException("A peça escolhida não é sua.");
         }
         if (!board.piece(position).isThereAnyPossibleMove()) {
-            throw new ChessException("There is no posssible moves for the chosen piece");
+            throw new ChessException("Não há movimentos possíveis para a peça escolhida.");
         }
     }
 
     private void validateTargetPosition(Position source, Position target) {
         if (!board.piece(source).possibleMove(target)) {
-            throw new ChessException("The chosen piece can't move to target position");
+            throw new ChessException("A peça escolhida não pode se mover para a posição de destino.");
         }
     }
 
@@ -256,7 +256,7 @@ public class ChessMatch {
                 return (ChessPiece) piece;
             }
         }
-        throw new IllegalStateException("There is no " + color + " king on the board");
+        throw new IllegalStateException("Não há rei " + color + " no tabuleiro.");
     }
 
     private boolean testCheck(Color color) {

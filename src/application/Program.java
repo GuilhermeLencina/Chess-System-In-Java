@@ -21,14 +21,14 @@ public class Program {
                 UI.clearScreen();
                 UI.printMatch(chessMatch, captured);
                 System.out.println();
-                System.out.println("Source: ");
+                System.out.println("Origem: ");
                 ChessPosition source = UI.readChessPosition(scanner);
 
                 boolean[][] possibleMoves = chessMatch.possibleMoves(source);
                 UI.clearScreen();
                 UI.printBoard(chessMatch.getPieces(), possibleMoves);
                 System.out.println();
-                System.out.println("Target: ");
+                System.out.println("Destino: ");
                 ChessPosition target = UI.readChessPosition(scanner);
 
                 ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
@@ -36,10 +36,10 @@ public class Program {
                     captured.add(capturedPiece);
                 }
                 if (chessMatch.getPromoted() != null) {
-                    System.out.print("Enter piece for promotion (B/N/R/Q): ");
+                    System.out.print("Insira a peça para promoção (B/N/R/Q):");
                     String type = scanner.nextLine().toUpperCase();
                     while (!type.equals("B") && !type.equals("N") && !type.equals("R") & !type.equals("Q")) {
-                        System.out.print("Invalid value! Enter piece for promotion (B/N/R/Q): ");
+                        System.out.print("Valor inválido! Insira a peça para promoção (B/N/R/Q):");
                         type = scanner.nextLine().toUpperCase();
                     }
                     chessMatch.replacePromotedPiece(type);
